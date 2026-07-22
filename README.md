@@ -4,6 +4,20 @@ A full-stack ASP.NET Core MVC Web Application built with Entity Framework Core a
 
 ---
 
+## ℹ️ About the Project
+
+**Student Registration WebApp** is an end-to-end academic portal designed to manage course offerings and student registrations securely. 
+
+The application implements modern web architecture principles using **ASP.NET Core 10 MVC**, **Entity Framework Core (Code First)**, and **ASP.NET Core Identity**. It demonstrates role-based security where **Students** can browse academic offerings and register for a single course, while **Administrators** retain full management capabilities over course catalogs and student records.
+
+### Key Objectives:
+* **Secure Authentication**: User registration and login using ASP.NET Core Identity.
+* **Role-Based Authorization (RBAC)**: Fine-grained access controls separating Student and Administrator privileges.
+* **Database Management**: Entity Framework Core DbContext with relationship mapping and automatic seeding.
+* **Responsive UI**: Role-aware navbar navigation and modern Bootstrap 5 interface design.
+
+---
+
 ## 🌟 Features & Highlights
 
 * **User Authentication & Identity**: Built-in support for Registration, Login, Logout, and Role Management using ASP.NET Core Identity.
