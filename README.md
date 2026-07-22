@@ -18,6 +18,22 @@ The application implements modern web architecture principles using **ASP.NET Co
 
 ---
 
+## 📸 Application Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home-page.png)
+
+### 📚 Available Courses List (Admin / Student View)
+![Available Courses](screenshots/courses-list.png)
+
+### 👥 Students Directory (Admin View)
+![Students Directory](screenshots/students-directory.png)
+
+### 👤 Student Profile & Enrolled Course
+![Student Profile](screenshots/student-profile.png)
+
+---
+
 ## 🌟 Features & Highlights
 
 * **User Authentication & Identity**: Built-in support for Registration, Login, Logout, and Role Management using ASP.NET Core Identity.
@@ -122,22 +138,6 @@ Upon initial database seeding, a default administrator account is automatically 
 
 * **Email**: `admin@admin.com`
 * **Password**: `Admin@123`
-
----
-
-## 📸 Application Screenshots
-
-### 🏠 Home Page
-![Home Page](screenshots/home-page.png)
-
-### 📚 Available Courses List (Admin / Student View)
-![Available Courses](screenshots/courses-list.png)
-
-### 👥 Students Directory (Admin View)
-![Students Directory](screenshots/students-directory.png)
-
-### 👤 Student Profile & Enrolled Course
-![Student Profile](screenshots/student-profile.png)
 
 ---
 
