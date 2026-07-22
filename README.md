@@ -34,11 +34,16 @@ A full-stack ASP.NET Core MVC Web Application built with Entity Framework Core a
 | :--- | :---: | :---: | :---: |
 | **View Home & Public Pages** | ✅ | ✅ | ✅ |
 | **Browse Courses List** | ✅ | ✅ | ✅ |
-| **Register & Login Account** | ✅ | ❌ (Already Logged In) | ❌ (Already Logged In) |
-| **Register for a Course** | ❌ | ✅ *(Single course limit)* | ❌ |
-| **View & Edit Personal Profile** | ❌ | ✅ *(Own profile only)* | ❌ |
-| **Create, Edit, Delete Courses** | ❌ | ❌ | ✅ |
-| **View Master List of Students** | ❌ | ❌ | ✅ |
+| **Register & Login Account** | ✅ | ❌ *(Already Logged In)* | ❌ *(Already Logged In)* |
+| **Register for a Course** | ❌ | ✅ *(Single course limit)* | ❌ *(Admin role)* |
+| **View & Edit Personal Profile** | ❌ | ✅ *(Own profile only)* | ❌ *(Admin role)* |
+| **Create, Edit, Delete Courses** | ❌ | ❌ *(Restricted)* | ✅ |
+| **View Master List of Students** | ❌ | ❌ *(Privacy Rule)* | ✅ |
+
+> **Explanation of Red Cross (❌) Restrictions:**
+> * **Register / Login (❌ for Student & Admin)**: Users who are already signed in do not need to register or log in again (the navbar shows *Logout*).
+> * **Register for Course & Profile (❌ for Admin & Anonymous)**: Anonymous visitors must log in first. Administrators manage the portal and do not enroll in student courses.
+> * **Course Management & Student List (❌ for Student & Anonymous)**: Per security & privacy requirements, students are strictly forbidden from modifying courses or viewing other students' private information.
 
 ---
 
