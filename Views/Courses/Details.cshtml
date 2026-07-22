@@ -1,0 +1,38 @@
+@model StudentRegistrationWebApp.Models.Course
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="container my-5" style="max-width: 700px;">
+    <div class="card border-0 shadow-lg rounded-4 p-4">
+        <h1 class="display-6 fw-bold text-primary mb-3">Course Details</h1>
+        <p class="text-muted border-bottom pb-3 mb-4">Detailed specifications of the program.</p>
+
+        <div class="p-3 bg-light rounded-4 mb-5">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <td class="fw-bold text-secondary w-25">Course ID:</td>
+                        <td class="text-dark">#@Model.CourseId</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-secondary">Course Name:</td>
+                        <td class="text-dark fs-5 fw-semibold text-primary">@Model.CourseName</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold text-secondary">Duration:</td>
+                        <td class="text-dark">@Model.CourseDuration Months</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex gap-3 pt-3 border-top">
+            @if (User.IsInRole("Administrator"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.CourseId" class="btn btn-primary btn-lg px-4 rounded-pill shadow-sm">Edit Course</a>
+            }
+            <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Back to List</a>
+        </div>
+    </div>
+</div>

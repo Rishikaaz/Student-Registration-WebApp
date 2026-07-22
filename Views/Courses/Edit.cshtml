@@ -1,0 +1,36 @@
+@model StudentRegistrationWebApp.Models.Course
+@{
+    ViewData["Title"] = "Edit Course";
+}
+
+<div class="container my-5" style="max-width: 600px;">
+    <div class="card border-0 shadow-lg rounded-4 p-4">
+        <h1 class="display-6 fw-bold text-primary mb-3">Edit Course</h1>
+        <p class="text-muted border-bottom pb-3 mb-4">Modify properties for @Model.CourseName.</p>
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="CourseId" />
+
+            <div class="mb-4">
+                <label asp-for="CourseName" class="form-label fw-bold text-secondary"></label>
+                <input asp-for="CourseName" class="form-control form-control-lg rounded-3" />
+                <span asp-validation-for="CourseName" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="CourseDuration" class="form-label fw-bold text-secondary"></label>
+                <div class="input-group">
+                    <input asp-for="CourseDuration" class="form-control form-control-lg rounded-start-3" type="number" min="1" max="48" />
+                    <span class="input-group-text bg-light border-start-0 text-muted rounded-end-3">months</span>
+                </div>
+                <span asp-validation-for="CourseDuration" class="text-danger small"></span>
+            </div>
+
+            <div class="d-flex gap-3 mt-5 pt-3 border-top">
+                <button type="submit" class="btn btn-primary btn-lg px-4 rounded-pill shadow-sm">Save Changes</button>
+                <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

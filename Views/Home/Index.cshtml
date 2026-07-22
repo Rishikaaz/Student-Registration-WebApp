@@ -1,0 +1,106 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container my-5">
+    <div class="p-5 mb-5 bg-light rounded-5 shadow-sm text-center border">
+        <div class="mb-4">
+            <span class="badge bg-primary px-3 py-2 rounded-pill uppercase tracking-wider font-monospace">Student Registration System</span>
+        </div>
+        <h1 class="display-4 fw-bold text-dark mb-3">Welcome to our Educational Portal</h1>
+        <p class="col-lg-8 mx-auto fs-5 text-muted mb-4">
+            Easily manage your courses and registrations. Explore new subjects, register online, and track your progress in real-time.
+        </p>
+
+        @if (User.Identity == null || !User.Identity.IsAuthenticated)
+        {
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-sm">
+                    <i class="bi bi-person-plus me-2"></i>Get Started
+                </a>
+                <a asp-controller="Courses" asp-action="Index" class="btn btn-outline-secondary btn-lg px-5 py-3 rounded-pill">
+                    Browse Courses
+                </a>
+            </div>
+        }
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center hover-card">
+                <div class="icon-square bg-primary-soft text-primary mx-auto mb-3">
+                    <i class="bi bi-book fs-3"></i>
+                </div>
+                <h3 class="fw-bold h5 text-dark mb-2">Explore Courses</h3>
+                <p class="text-muted small">View all available academic programs, their durations, and syllabus information.</p>
+                <a asp-controller="Courses" asp-action="Index" class="btn btn-link text-primary mt-2">View Courses &rarr;</a>
+            </div>
+        </div>
+
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Student"))
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center hover-card">
+                        <div class="icon-square bg-success-soft text-success mx-auto mb-3">
+                            <i class="bi bi-person-badge fs-3"></i>
+                        </div>
+                        <h3 class="fw-bold h5 text-dark mb-2">My Profile</h3>
+                        <p class="text-muted small">Access your registered course status, update your location or check registration details.</p>
+                        <a asp-controller="Students" asp-action="Profile" class="btn btn-link text-success mt-2">Go to Profile &rarr;</a>
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Administrator"))
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center hover-card">
+                        <div class="icon-square bg-info-soft text-info mx-auto mb-3">
+                            <i class="bi bi-people fs-3"></i>
+                        </div>
+                        <h3 class="fw-bold h5 text-dark mb-2">Manage Students</h3>
+                        <p class="text-muted small">Administrators can view all registered students, details, and current registrations.</p>
+                        <a asp-controller="Students" asp-action="Index" class="btn btn-link text-info mt-2">View Directory &rarr;</a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center hover-card">
+                    <div class="icon-square bg-warning-soft text-warning mx-auto mb-3">
+                        <i class="bi bi-shield-lock fs-3"></i>
+                    </div>
+                    <h3 class="fw-bold h5 text-dark mb-2">Easy Enrollment</h3>
+                    <p class="text-muted small">Register an account to pick a course. Students are restricted to one course enrollment.</p>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-link text-warning mt-2">Sign Up Now &rarr;</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .icon-square {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .bg-primary-soft { background-color: rgba(13, 110, 253, 0.08); }
+    .bg-success-soft { background-color: rgba(25, 135, 84, 0.08); }
+    .bg-info-soft { background-color: rgba(13, 202, 240, 0.08); }
+    .bg-warning-soft { background-color: rgba(255, 193, 7, 0.08); }
+    
+    .hover-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+    }
+</style>

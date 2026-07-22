@@ -1,0 +1,101 @@
+@model StudentRegistrationWebApp.Models.Student
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container my-5" style="max-width: 800px;">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+        <div>
+            <h1 class="display-5 fw-bold text-primary mb-1">My Profile</h1>
+            <p class="text-muted mb-0">View and manage your student profile details.</p>
+        </div>
+        <a asp-action="EditProfile" class="btn btn-outline-primary px-4 py-2 rounded-pill shadow-sm">
+            <i class="bi bi-pencil-square me-2"></i>Edit Profile
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100 p-4">
+                <h3 class="h5 fw-bold text-secondary mb-4 pb-2 border-bottom">Personal Details</h3>
+                
+                <div class="mb-3">
+                    <div class="text-muted small">Student ID:</div>
+                    <div class="fw-semibold text-dark">#@Model.StudentId</div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="text-muted small">Full Name:</div>
+                    <div class="fw-bold text-dark fs-5">@Model.FullName</div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="text-muted small">City Location:</div>
+                    <div class="fw-semibold text-dark">@Model.City</div>
+                </div>
+
+                <div class="mb-0">
+                    <div class="text-muted small">Account Email:</div>
+                    <div class="fw-semibold text-muted">@Model.User?.Email</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100 p-4 d-flex flex-column justify-content-between">
+                <div>
+                    <h3 class="h5 fw-bold text-secondary mb-4 pb-2 border-bottom">Registered Course</h3>
+                    
+                    @if (Model.Course != null)
+                    {
+                        <div class="p-3 bg-success-soft rounded-4 mb-3 border-start border-success border-4">
+                            <h4 class="h6 text-success fw-bold mb-1">Course Selected</h4>
+                            <div class="fs-4 fw-bold text-dark mb-2">@Model.Course.CourseName</div>
+                            <span class="badge bg-success px-3 py-2 rounded-pill">Duration: @Model.Course.CourseDuration Months</span>
+                        </div>
+                        <p class="text-muted small mb-0"><i class="bi bi-info-circle me-1"></i>You are currently enrolled in this course. You can only register for one course.</p>
+                    }
+                    else
+                    {
+                        <div class="p-3 bg-warning-soft rounded-4 mb-4 border-start border-warning border-4">
+                            <h4 class="h6 text-warning fw-bold mb-1">Not Registered</h4>
+                            <p class="text-dark small mb-0">You have not registered for any courses yet.</p>
+                        </div>
+                        <p class="text-muted small mb-4">Please select a course to register and begin your learning path.</p>
+                        
+                        <div class="d-grid">
+                            <a asp-action="RegisterCourse" class="btn btn-primary py-2.5 rounded-pill shadow-sm">
+                                Register for a Course Now
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-success-soft {
+        background-color: rgba(25, 135, 84, 0.08);
+    }
+    .bg-warning-soft {
+        background-color: rgba(255, 193, 7, 0.08);
+    }
+</style>

@@ -1,0 +1,72 @@
+@model IEnumerable<StudentRegistrationWebApp.Models.Course>
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+        <div>
+            <h1 class="display-5 fw-bold text-primary mb-1">Available Courses</h1>
+            <p class="text-muted mb-0">Browse through our current educational programs.</p>
+        </div>
+        @if (User.IsInRole("Administrator"))
+        {
+            <a asp-action="Create" class="btn btn-primary px-4 py-2 shadow-sm rounded-pill hover-zoom">
+                <i class="bi bi-plus-circle me-2"></i>Add New Course
+            </a>
+        }
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm transition-card rounded-4">
+                    <div class="card-body p-4 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill font-monospace">
+                                @item.CourseDuration Months
+                            </span>
+                            <div class="text-muted fs-6">ID: #@item.CourseId</div>
+                        </div>
+                        <h3 class="card-title h4 fw-bold text-dark mb-3">@item.CourseName</h3>
+                        <p class="text-muted flex-grow-1">Learn state-of-the-art technologies with our comprehensive @item.CourseName program designed for students of all skill levels.</p>
+                        
+                        <div class="d-flex gap-2 mt-4 pt-3 border-top justify-content-end">
+                            <a asp-action="Details" asp-route-id="@item.CourseId" class="btn btn-outline-secondary btn-sm px-3 rounded-pill">Details</a>
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.CourseId" class="btn btn-outline-primary btn-sm px-3 rounded-pill">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.CourseId" class="btn btn-outline-danger btn-sm px-3 rounded-pill">Delete</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .bg-primary-soft {
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+    .transition-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .transition-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.15)!important;
+    }
+    .hover-zoom:hover {
+        transform: scale(1.03);
+    }
+</style>
