@@ -125,6 +125,22 @@ Upon initial database seeding, a default administrator account is automatically 
 
 ---
 
+## 📸 Application Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home-page.png)
+
+### 📚 Available Courses List (Admin / Student View)
+![Available Courses](screenshots/courses-list.png)
+
+### 👥 Students Directory (Admin View)
+![Students Directory](screenshots/students-directory.png)
+
+### 👤 Student Profile & Enrolled Course
+![Student Profile](screenshots/student-profile.png)
+
+---
+
 ## 📁 Directory Structure
 
 ```
@@ -141,6 +157,11 @@ StudentRegistrationWebApp/
 │── Models/
 │   ├── Course.cs              # Course entity model
 │   └── Student.cs             # Student entity model
+│── screenshots/               # Application UI screenshots
+│   ├── courses-list.png
+│   ├── home-page.png
+│   ├── student-profile.png
+│   └── students-directory.png
 │── Views/
 │   ├── Courses/               # Course views (Index, Create, Edit, Delete, Details)
 │   ├── Home/                  # Home page views
